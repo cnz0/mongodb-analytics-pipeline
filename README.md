@@ -26,17 +26,17 @@ mongodb-analytics-pipeline/<br>
 
 ### Transformation Pipeline ###
 - Data was imported into a raw collection and transformed using aggregation pipelines:
-- raw -> videos
+- **raw -> videos**
 - Group by video_id
 - Normalize types
 - Split tags into arrays
 - Reshape document structure
 
-- raw -> channels
+- **raw -> channels**
 - Aggregate channel-level metrics
 - Collect related video references
 
-- raw -> trending_stats
+- **raw -> trending_stats**
 - Normalize date fields
 - Create time-series-like structure
 
