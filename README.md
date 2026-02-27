@@ -27,18 +27,18 @@ mongodb-analytics-pipeline/<br>
 ### Transformation Pipeline ###
 - Data was imported into a raw collection and transformed using aggregation pipelines:
 - raw -> videos
-  Group by video_id\br
-  Normalize types\br
-  Split tags into arrays\br
-  Reshape document structure\br
+- Group by video_id
+- Normalize types
+- Split tags into arrays
+- Reshape document structure
 
 - raw -> channels
-  Aggregate channel-level metrics\br
-  Collect related video references\br
+- Aggregate channel-level metrics
+- Collect related video references
 
 - raw -> trending_stats
-  Normalize date fields\br
-  Create time-series-like structure\br
+- Normalize date fields
+- Create time-series-like structure
 
 This models a ELT workflow fully inside MongoDB.
 
@@ -46,13 +46,13 @@ This models a ELT workflow fully inside MongoDB.
 
 Two approaches were evaluated:\br
 
-- Embedded\br
-  Trending data embedded in video documents.\br
-  Faster reads, larger documents.\br
+- Embedded
+- Trending data embedded in video documents.
+- Faster reads, larger documents.
 
 - Reference\br
-  Trending data stored separately with video_id reference.\br
-  Smaller documents, requires $lookup.\br
+- Trending data stored separately with video_id reference.
+- Smaller documents, requires $lookup.
 
 Trade-offs were evaluated using real query plans.\br
 
