@@ -1,0 +1,82 @@
+--zapytanie-EMB--
+
+db.videos.aggregate([
+  {
+    $match: {
+      tags: "Music",
+      "status.comments_disabled": false
+    }
+  },
+  {
+    $sort: {
+      "stats_summary.max_views": -1
+    }
+  },
+  {
+    $limit: 10
+  },
+  {
+    $project: {
+      _id: 0,
+      video_id: 1,
+      title: 1,
+      "channel.title": 1,
+      publishedAt: 1,
+      tags: 1,
+      "stats_summary.max_views": 1,
+      "stats_summary.total_trending_days": 1
+    }
+  }
+]);
+
+
+--zapytanie-REF--
+
+db.channels.aggregate([
+  {
+    $match: {
+      title: "MigosVEVO"
+    }
+  },
+  {
+    $lookup: {
+      from: "videos",
+      localField: "channel_id",
+      foreignField: "channel.id",
+      as: "videos"
+    }
+  },
+  {
+    $unwind: "$videos"
+  },
+  {
+    $lookup: {
+      from: "trending_stats",
+      localField: "videos.video_id",
+      foreignField: "video_id",
+      as: "trending_entries"
+    }
+  },
+  {
+    $unwind: "$trending_entries"
+  },
+  {
+    $group: {
+      _id: "$videos.video_id",
+      title: { $first: "$videos.title" },
+      channel_title: { $first: "$title" },
+      total_days_trending: { $sum: 1 },
+      avg_views_per_day: { $avg: "$trending_entries.daily_stats.views" }
+    }
+  },
+  {
+    $sort: {
+      avg_views_per_day: -1
+    }
+  },
+
+  // 8. Top 5 filmów tego kanału
+  {
+    $limit: 5
+  }
+]);
