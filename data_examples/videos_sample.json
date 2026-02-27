@@ -1,0 +1,36 @@
+{
+  _id: '693492b24398cd3cbd1f75c4',
+  title: 'Migos - Avalanche',
+  categoryId: 10,
+  description: 'Music video by Migos performing Avalanche. Quality Control Music/Motown Records; © 2021 Quality Control Music, LLC, under exclusive license to UMG Recordings, Inc.http://vevo.ly/71eTSO',
+  video_id: '--14w5SOEUs',
+  channel: {
+    id: 'UCGIelM2Dj3zza3xyV3pL3WQ',
+    title: 'MigosVEVO'
+  },
+  publishedAt: 2021-06-10T16:00:00.000Z,
+  tags: [
+    'Migos',
+    'Avalanche',
+    'Quality',
+    'Control',
+    'Music/Motown',
+    'Records',
+    'Hip',
+    'Hop'
+  ],
+  status: {
+    comments_disabled: false,
+    ratings_disabled: false
+  },
+  thumbnails: {
+    default: 'https://i.ytimg.com/vi/--14w5SOEUs/default.jpg'
+  },
+  stats_summary: {
+    max_views: 6823249,
+    max_likes: 262692,
+    max_dislikes: 4107,
+    max_comment_count: 16445,
+    total_trending_days: 20
+  }
+}
