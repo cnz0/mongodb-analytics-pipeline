@@ -1,9 +1,9 @@
 ### MongoDB Analytics Pipeline – YouTube Trending Dataset ###
 
-This project implements a document-oriented data transformation pipeline in MongoDB using the YouTube Trending Video Dataset (Kaggle).\br
-Dataset: https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset\br\br
-The goal was to transform denormalized CSV data into structured analytical collections and evaluate modeling and indexing strategies.\br
-Example collections elements can be found under /data_examples\br
+This project implements a document-oriented data transformation pipeline in MongoDB using the YouTube Trending Video Dataset (Kaggle).<br>
+Dataset: https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset<br><br>
+The goal was to transform denormalized CSV data into structured analytical collections and evaluate modeling and indexing strategies.<br>
+Example collections elements can be found under /data_examples
 
 ### Scope ###
 - Raw CSV ingestion into MongoDB
@@ -44,17 +44,17 @@ This models a ELT workflow fully inside MongoDB.
 
 ### Modeling Strategy ###
 
-Two approaches were evaluated:\br
+Two approaches were evaluated:
 
 - Embedded
 - Trending data embedded in video documents.
 - Faster reads, larger documents.
 
-- Reference\br
+- Reference
 - Trending data stored separately with video_id reference.
 - Smaller documents, requires $lookup.
 
-Trade-offs were evaluated using real query plans.\br
+Trade-offs were evaluated using real query plans.
 
 ### Performance & Indexing ###
 
